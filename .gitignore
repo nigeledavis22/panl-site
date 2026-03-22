@@ -1,0 +1,6 @@
+# Environment variables — never commit
+.env
+
+# macOS
+.DS_Store
+
