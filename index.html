@@ -351,14 +351,20 @@
 
         .section-headline em {
             font-style: normal;
+            color: var(--stone-600);
         }
 
         .section-body {
-            font-size: 1rem;
+            font-size: 1.25rem;
             font-weight: 300;
             color: var(--ink-muted);
-            line-height: 1.8;
-            max-width: 52ch;
+        }
+
+        .section-body em {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--ink-muted);
+            font-style: normal;
         }
 
         /* ── PROBLEM ─────────────────────────────────────────────────── */
@@ -407,7 +413,7 @@
 
         .problem-card-num {
             font-family: var(--serif);
-            font-size: 0.85rem;
+            font-size: 1.25rem;
             font-style: normal;
             color: var(--stone-400);
             margin-bottom: 0.5rem;
@@ -760,8 +766,9 @@
 
         .use-case-num {
             font-family: var(--serif);
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-style: normal;
+            font-weight: 600;
             color: var(--stone-400);
             margin-bottom: 1rem;
         }
@@ -1286,12 +1293,6 @@
                 Your baby's own room.<br>
                 <em>Inside your apartment.</em>
             </h1>
-            <p class="hero-sub">
-                Right now, your baby sleeps in the corner of your living room — and your living room stops existing at
-                bedtime. Panl fits in that same corner. It makes the space quieter and darker around your baby's crib,
-                without moving, renovating, or making any permanent changes to your apartment. They sleep
-                longer. You get your evenings back.
-            </p>
             <form class="hero-form" onsubmit="handleSubmit(event,'hero-success')">
                 <input type="email" placeholder="Your email address" required aria-label="Email">
                 <button type="submit">Join the waitlist</button>
@@ -1304,8 +1305,7 @@
                 </svg>
                 You're on the list. We'll be in touch.
             </div>
-            <p class="hero-note">No commitment. Free to join. Early access members get a say in how it's built and how
-                it's priced.</p>
+            <p class="hero-note">No commitment. Free to join.</p>
         </div>
         <div class="hero-right">
             <div class="hero-right-img">
@@ -1347,10 +1347,9 @@
     <section class="problem">
         <div class="section-inner">
             <div class="section-eyebrow">The problem</div>
-            <h2 class="section-headline">One-bedroom living with a baby<br>is <em>harder than anyone tells you.</em>
-            </h2>
-            <p class="section-body">You didn't plan for a nursery because you don't have a spare room. So your baby
-                sleeps in the same space you live in — and neither of you is getting enough.</p>
+            <h2 class="section-headline">Raising a baby in a one-bedroom apartment can be <em>hard.</em></h2>
+            <p class="section-body">You don't have a nursery because you don't have a spare room. Now, your baby
+                sleeps in the same space you live in, and <em>neither of you is getting what you need.</em></p>
             <div class="problem-grid">
                 <div class="problem-image fade-up">
                     <img src="images/img-09.jpg" alt="Narrow apartment living space at night">
@@ -1359,15 +1358,15 @@
                     <div class="problem-card fade-up">
                         <div class="problem-card-num">01</div>
                         <div class="problem-card-title">You can't use your own living room</div>
-                        <div class="problem-card-body">Once the baby is down, the TV goes off, the lights go down, and
+                        <div class="problem-card-body">Once the baby is asleep, the TV goes off, the lights go down, and
                             you tiptoe around your own home for the rest of the evening. Every noise feels like a risk.
                         </div>
                     </div>
                     <div class="problem-card fade-up fade-delay-1">
                         <div class="problem-card-num">02</div>
-                        <div class="problem-card-title">Light and sound keep waking them</div>
-                        <div class="problem-card-body">Normal apartment life — a kitchen light, a conversation, the
-                            couple next door — is enough to cut a 45-minute sleep cycle short. Again. You know this
+                        <div class="problem-card-title">Apartments are full of light and sound</div>
+                        <div class="problem-card-body">Normal apartment sounds, like a conversation from the couple
+                            next door, are enough to cut a 45-minute sleep cycle short. Again. You know this
                             pattern well.</div>
                     </div>
                     <div class="problem-card fade-up fade-delay-2">
@@ -1401,9 +1400,8 @@
     <section class="voices">
         <div class="section-inner">
             <div class="section-eyebrow">From the forums</div>
-            <h2 class="section-headline">You're not the only one<br><em>saying this.</em></h2>
-            <p class="section-body">These are real posts from parents in parenting communities online. We didn't write
-                them. We just recognised them.</p>
+            <h2 class="section-headline">You're <em>not</em> the only parent experiencing this.</h2>
+            <p class="section-body">These are real posts from parents in parenting communities online.</p>
             <div class="voices-grid">
 
                 <div class="voice-card">
@@ -1486,7 +1484,7 @@
         <div class="section-inner">
             <div class="section-eyebrow">What Panl does</div>
             <h2 class="section-headline">A dedicated sleep space.<br><em>No spare room required.</em></h2>
-            <p class="section-body">Panl clips together in the corner of your living room, creating a controlled
+            <p class="section-body">Panl connects together in your apartment to create a controlled
                 environment around your baby's sleep space — without any permanent changes to your home.</p>
             <div class="solution-grid">
                 <div class="solution-card fade-up">
@@ -1500,10 +1498,10 @@
                         </svg>
                     </div>
                     <div class="solution-title">Quieter inside</div>
-                    <div class="solution-body">Acoustic panels absorb the mid and high frequencies that wake light
-                        sleepers — conversation, kitchen noise, TV audio. Not a soundproof room. Meaningfully quieter
-                        than nothing.</div>
-                    <div class="solution-spec">Absorbs ~half of room noise · Recycled PET felt core · No VOC</div>
+                    <div class="solution-body">Acoustic panels absorb the frequencies that wake light
+                        sleepers — conversation, kitchen noise, TV audio. Not a soundproof room, but meaningfully
+                        quieter.</div>
+                    <div class="solution-spec">Absorbs room noise</div>
                 </div>
                 <div class="solution-card fade-up fade-delay-1">
                     <div class="solution-icon">
@@ -1516,9 +1514,8 @@
                     </div>
                     <div class="solution-title">Darker for naps</div>
                     <div class="solution-body">Panels block 80–90% of ambient light. The overlapping curtain entry seals
-                        the front with no gap. Nap-ready in a bright living room — including during the long summer
-                        evenings that mess with bedtime.</div>
-                    <div class="solution-spec">80–90% light reduction · Blackout curtain liner · Overlap-seal entry
+                        the front with no gap. Nap-ready even in a bright living room.</div>
+                    <div class="solution-spec">Light reduction
                     </div>
                 </div>
                 <div class="solution-card fade-up fade-delay-2">
@@ -1534,9 +1531,8 @@
                     </div>
                     <div class="solution-title">Always ventilated</div>
                     <div class="solution-body">The enclosure is never sealed. A mesh vent channel at the top and a base
-                        intake gap ensure continuous passive airflow. At least 15% of the surface area is breathable at
-                        all times.</div>
-                    <div class="solution-spec">Passive stack airflow · No mechanical parts · ≥15% vented surface</div>
+                        intake gap ensure continuous passive airflow.</div>
+                    <div class="solution-spec">Consistent airflow</div>
                 </div>
             </div>
             <div class="img-grid-3">
@@ -1796,22 +1792,22 @@
         <div class="independence-inner">
             <div>
                 <h2 class="independence-headline">
-                    The moments you've<br>been waiting to<br><em>have back.</em>
+                    The moments you've been <em>waiting to get back.</em>
                 </h2>
                 <p class="independence-body">
-                    When your baby has their own space — even inside your apartment — the texture of your evening
-                    changes. These aren't big asks. They're the small things that make a difference to how you feel.
+                    When your baby has their own space, the texture of your evening
+                    changes. These aren't big asks. They're the small moments that make a huge difference.
                 </p>
             </div>
             <div class="independence-moments">
                 <div class="moment">
                     <div class="moment-time">7:30 pm</div>
-                    <div class="moment-text"><strong>Baby is down.</strong> You turn the kitchen light on and make
+                    <div class="moment-text"><strong>Baby is asleep.</strong> You turn the kitchen light on and make
                         dinner without holding your breath.</div>
                 </div>
                 <div class="moment">
                     <div class="moment-time">8:00 pm</div>
-                    <div class="moment-text"><strong>You watch something.</strong> At a normal volume. Without
+                    <div class="moment-text"><strong>You watch your favorite show.</strong> At a normal volume. Without
                         subtitles. For the first time in weeks.</div>
                 </div>
                 <div class="moment">
@@ -1821,8 +1817,8 @@
                 </div>
                 <div class="moment">
                     <div class="moment-time">10:00 pm</div>
-                    <div class="moment-text"><strong>You go to bed</strong> having had an evening, not just survived
-                        one. That matters more than it sounds.</div>
+                    <div class="moment-text"><strong>You go to bed.</strong> Having lived this evening, not just
+                        survived it. That matters more than it sounds.</div>
                 </div>
             </div>
         </div>
@@ -1834,7 +1830,7 @@
             <div class="safety-grid">
                 <div>
                     <div class="section-eyebrow">Safety &amp; materials</div>
-                    <h2 class="section-headline">Every decision starts<br>with <em>one priority.</em></h2>
+                    <h2 class="section-headline">Every decision starts with <em>one priority.</em></h2>
                     <p class="section-body" style="margin-bottom: 2.5rem;">From the ventilation design to the fabric
                         seaming, every detail assumes an infant is inside and a parent is nearby.</p>
                     <div class="safety-points">
@@ -1846,9 +1842,7 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
-                            <div class="safety-point-text"><strong>Always breathing.</strong> Passive airflow through
-                                upper mesh vents and a lower intake gap. Never sealed. At least 15% of surface area
-                                ventilated by design.</div>
+                            <div class="safety-point-text"><strong>Passive airflow throughout.</strong></div>
                         </div>
                         <div class="safety-point fade-up fade-delay-1">
                             <div class="safety-point-icon">
@@ -1858,9 +1852,7 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
-                            <div class="safety-point-text"><strong>Non-toxic throughout.</strong> Recycled PET acoustic
-                                core. No VOC off-gassing. GREENGUARD Gold certification targeted. CAL TB117-2013 flame
-                                compliance.</div>
+                            <div class="safety-point-text"><strong>Non-toxic.</strong></div>
                         </div>
                         <div class="safety-point fade-up fade-delay-2">
                             <div class="safety-point-icon">
@@ -1870,9 +1862,7 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
-                            <div class="safety-point-text"><strong>No cords, no loops, no hazards.</strong> No tie-backs
-                                or trailing fabric within reach. All frame edges rounded. Locking joints pinch-free by
-                                design.</div>
+                            <div class="safety-point-text"><strong>No cords, no loops, no hazards.</strong></div>
                         </div>
                         <div class="safety-point fade-up fade-delay-3">
                             <div class="safety-point-icon">
@@ -1882,14 +1872,12 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </div>
-                            <div class="safety-point-text"><strong>Immediate access, always.</strong> The curtain opens
-                                fully with one hand. No latches, no delay. You are always one second away from your
-                                baby.</div>
+                            <div class="safety-point-text"><strong>Immediate access, always.</strong></div>
                         </div>
                     </div>
                     <div class="safety-disclaimer">
                         <strong>Important:</strong> Panl is an environmental enclosure, not a sleep surface or childcare
-                        device. It is designed for use alongside — not instead of — current safe sleep guidelines.
+                        device. It is designed for use alongside, not instead of, current safe sleep guidelines.
                         Always follow your pediatrician's guidance. Never leave an infant unsupervised.
                     </div>
                 </div>
@@ -1929,17 +1917,18 @@
                 <div class="use-case-card fade-up fade-delay-1">
                     <div class="use-case-num">Situation 02</div>
                     <div class="use-case-title">The open-plan problem</div>
-                    <div class="use-case-body">Your apartment is lovely and open and completely wrong for a baby. The
-                        kitchen, the living room, and the sleeping area are one continuous space. There is nowhere that
-                        is genuinely dark and quiet when the rest of the flat is in use.</div>
+                    <div class="use-case-body">Your apartment is beautiful and open, but completely wrong for a baby.
+                        The kitchen, the living room, and the sleeping area are one continuous space. There is nowhere
+                        that
+                        is genuinely dark and quiet when the rest of the home is in use.</div>
                     <div class="use-case-tag">Studio / open-plan</div>
                 </div>
                 <div class="use-case-card fade-up fade-delay-2">
                     <div class="use-case-num">Situation 03</div>
                     <div class="use-case-title">Six months of survival mode</div>
-                    <div class="use-case-body">The baby is starting to sleep longer — but only if conditions are right.
+                    <div class="use-case-body">The baby is starting to sleep longer, but only if conditions are right.
                         You've identified that light and sound are the main culprits. You don't need a miracle. You need
-                        a better environment, not better luck.</div>
+                        a better environment.</div>
                     <div class="use-case-tag">Sleep consolidation stage</div>
                 </div>
             </div>
@@ -1976,8 +1965,8 @@
     <section class="final-cta" id="waitlist">
         <div class="section-eyebrow">Early access</div>
         <h2 class="section-headline">Get your evenings back.<br></h2>
-        <p class="final-cta-sub">Panl is in active development. Parents on the waitlist get early access, honest
-            progress updates, and a direct say in what gets built — including how it's priced. No commitment. Free to
+        <p class="final-cta-sub">Panl is in active development. Parents on the waitlist get early access,
+            progress updates, and a direct say in what gets built. No commitment. Free to
             join.</p>
         <form class="cta-form" onsubmit="handleSubmit(event,'cta-success')">
             <input type="email" placeholder="Your email address" required aria-label="Email">
