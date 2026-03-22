@@ -1,6 +1,12 @@
 # Environment variables — never commit
 .env
 
+# Claude Code settings
+.claude/
+
 # macOS
 .DS_Store
 
+
+# Local Netlify folder
+.netlify
