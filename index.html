@@ -809,6 +809,87 @@
             opacity: 0.4;
         }
 
+        /* ── FAQ ─────────────────────────────────────────────────────── */
+        .faq {
+            background: var(--stone-50);
+        }
+
+        .faq-list {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border-top: 1px solid var(--stone-200);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--stone-200);
+        }
+
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4rem 0;
+            font-family: var(--font-serif);
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            font-weight: 400;
+            color: var(--ink);
+            gap: 1.5rem;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            position: relative;
+        }
+
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--stone-400);
+            border-radius: 2px;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .faq-icon::before {
+            width: 12px;
+            height: 1.5px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .faq-icon::after {
+            width: 1.5px;
+            height: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .faq-item[open] .faq-icon::after {
+            transform: translate(-50%, -50%) rotate(90deg);
+            opacity: 0;
+        }
+
+        .faq-answer {
+            padding-bottom: 1.4rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--ink-muted);
+            line-height: 1.75;
+            max-width: 640px;
+        }
+
         /* ── FINAL CTA ───────────────────────────────────────────────── */
         .final-cta {
             background: var(--ink);
@@ -1401,7 +1482,7 @@
         <div class="section-inner">
             <div class="section-eyebrow">From the forums</div>
             <h2 class="section-headline">You're <em>not</em> the only parent experiencing this.</h2>
-            <p class="section-body">These are real posts from parents in parenting communities online.</p>
+            <p class="section-body">These are real posts from parenting communities online.</p>
             <div class="voices-grid">
 
                 <div class="voice-card">
@@ -1783,6 +1864,95 @@
                     </svg>
                     You're on the list. We'll be in touch.
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FAQ ────────────────────────────────────────────────────── -->
+    <section class="faq">
+        <div class="section-inner">
+            <div class="section-eyebrow">Safety questions</div>
+            <h2 class="section-headline">The questions every parent <em>should</em> ask.</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>
+                        Is it safe for my baby to sleep inside an enclosed space?
+                        <span class="faq-icon"></span>
+                    </summary>
+                    <div class="faq-answer">Panl is designed with passive airflow throughout — the fabric panels and
+                        frame allow continuous air circulation so CO₂ doesn't build up. It is not airtight. That said,
+                        Panl is an environmental enclosure, not a sleep surface. Your baby still sleeps on their own
+                        firm, flat mattress following standard safe sleep guidelines. Panl controls the room around
+                        them, not the cot.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>
+                        Could my baby overheat inside?
+                        <span class="faq-icon"></span>
+                    </summary>
+                    <div class="faq-answer">Overheating is a genuine concern, which is why ventilation was the first
+                        design constraint we solved. The panels are breathable and the frame maintains a gap at floor
+                        level. We also recommend using a baby monitor with a temperature sensor inside the enclosure so
+                        you always have a live read on conditions.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>
+                        Can I get to my baby quickly if I need to?
+                        <span class="faq-icon"></span>
+                    </summary>
+                    <div class="faq-answer">Yes. The entry panel opens fully in one motion — there are no latches,
+                        locks, or mechanisms to fumble with in the dark. Immediate access was a non-negotiable design
+                        requirement. You can be inside in under two seconds.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>
+                        Could the panels fall onto my baby?
+                        <span class="faq-icon"></span>
+                    </summary>
+                    <div class="faq-answer">The frame is freestanding and engineered to be stable under normal
+                        conditions. The panels are lightweight fabric over a rigid frame — not heavy material that poses
+                        a crush risk. That said, Panl should always be set up on a flat, level floor away from anything
+                        that could destabilise it, and should never be used as a climbing frame.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>
+                        What are the panels made of? Are the materials safe?
+                        <span class="faq-icon"></span>
+                    </summary>
+                    <div class="faq-answer">All materials are non-toxic. The fabric is free from harmful dyes and
+                        finishes. No small parts, no cords, no loops — nothing that could pose an entanglement or
+                        ingestion hazard. Full material specifications will be published before launch.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>
+                        Does Panl follow safe sleep guidelines?
+                        <span class="faq-icon"></span>
+                    </summary>
+                    <div class="faq-answer">Panl is designed to complement safe sleep, not replace it. The AAP's safe
+                        sleep guidelines — firm flat surface, no loose bedding, on their back — apply inside Panl
+                        exactly as they do anywhere else. Panl controls light, noise, and temperature around the sleep
+                        space. It does not change what goes inside the cot. Always follow your pediatrician's guidance.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>
+                        Can I use a baby monitor inside Panl?
+                        <span class="faq-icon"></span>
+                    </summary>
+                    <div class="faq-answer">Yes, and we recommend it. A monitor with both video and temperature sensing
+                        gives you a full picture of what's happening inside. Cable management is built into the frame so
+                        you can route a monitor cable without creating a hazard.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>
+                        What age range is Panl designed for?
+                        <span class="faq-icon"></span>
+                    </summary>
+                    <div class="faq-answer">Panl is designed for infants from newborn through toddler age — broadly, the
+                        years when sleep environment matters most and when a dedicated, controlled sleep space has the
+                        biggest impact. Specific age guidance will be confirmed before launch based on final testing.
+                    </div>
+                </details>
             </div>
         </div>
     </section>
