@@ -2166,13 +2166,10 @@
             form.style.display = 'none';
             document.getElementById(successId).classList.add('show');
             try {
-                await fetch('https://app.loops.so/api/v1/contacts/create', {
+                await fetch('/.netlify/functions/subscribe', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer 34a65188288a834a57c1836179385d1d'
-                    },
-                    body: JSON.stringify({ email, userGroup: 'BABY' })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
                 });
             } catch (_) { /* fail silently — success message already shown */ }
         }
