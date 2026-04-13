@@ -30,7 +30,6 @@ exports.handler = async (event) => {
             city,
             unitType,
             sqft,
-            painPoints: painPointsStr,
             ...flags
         })
     });
