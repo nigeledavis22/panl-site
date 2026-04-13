@@ -3,15 +3,15 @@ exports.handler = async (event) => {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
 
-    const { email } = JSON.parse(event.body);
+    const { name, email } = JSON.parse(event.body);
 
-    const response = await fetch('https://app.loops.so/api/v1/contacts/create', {
+    const response = await fetch('https://app.loops.so/api/v1/contacts/upsert', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${process.env.LOOPS_API_KEY}`
         },
-        body: JSON.stringify({ email, userGroup: 'BABY' })
+        body: JSON.stringify({ email, firstName: name })
     });
 
     const data = await response.json();
