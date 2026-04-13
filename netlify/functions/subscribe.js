@@ -4,6 +4,8 @@ exports.handler = async (event) => {
     }
 
     const { name, email } = JSON.parse(event.body);
+    const [firstName, ...rest] = name.trim().split(/\s+/);
+    const lastName = rest.join(' ');
 
     const response = await fetch('https://app.loops.so/api/v1/contacts/create', {
         method: 'POST',
@@ -11,7 +13,7 @@ exports.handler = async (event) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${process.env.LOOPS_API_KEY}`
         },
-        body: JSON.stringify({ email, firstName: name })
+        body: JSON.stringify({ email, firstName, lastName })
     });
 
     const data = await response.json();
