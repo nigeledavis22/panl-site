@@ -10,7 +10,7 @@ exports.handler = async (event) => {
 
     // Map pain point labels to boolean flags
     const flags = {
-        isWFH:             painPoints.includes('Working from home'),
+        isWfh:             painPoints.includes('Working from home'),
         isNursery:         painPoints.includes('Baby or young child sleeping'),
         isAfterSchool:     painPoints.includes('Kids home after school'),
         isExercise:        painPoints.includes('Exercising at home'),
