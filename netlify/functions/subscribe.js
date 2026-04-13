@@ -5,7 +5,7 @@ exports.handler = async (event) => {
 
     const { name, email } = JSON.parse(event.body);
 
-    const response = await fetch('https://app.loops.so/api/v1/contacts/upsert', {
+    const response = await fetch('https://app.loops.so/api/v1/contacts/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
