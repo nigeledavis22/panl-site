@@ -8,6 +8,16 @@ exports.handler = async (event) => {
     const { email, city, unitType, sqft, painPoints } = JSON.parse(event.body);
     const painPointsStr = Array.isArray(painPoints) ? painPoints.join(', ') : '';
 
+    // Map pain point labels to boolean flags
+    const flags = {
+        isWFH:             painPoints.includes('Working from home'),
+        isNursery:         painPoints.includes('Baby or young child sleeping'),
+        isAfterSchool:     painPoints.includes('Kids home after school'),
+        isExercise:        painPoints.includes('Exercising at home'),
+        isOvernightGuests: painPoints.includes('Hosting overnight guests'),
+        isPets:            painPoints.includes('Living with a pet')
+    };
+
     // ── 1. Update Loops contact with survey answers ──────────────────
     await fetch('https://app.loops.so/api/v1/contacts/update', {
         method: 'PUT',
@@ -20,7 +30,8 @@ exports.handler = async (event) => {
             city,
             unitType,
             sqft,
-            painPoints: painPointsStr
+            painPoints: painPointsStr,
+            ...flags
         })
     });
 
