@@ -5,7 +5,8 @@ exports.handler = async (event) => {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
 
-    const { email, city, unitType, sqft, painPoints } = JSON.parse(event.body);
+    const { email, name, city, unitType, sqft, ownership, painPoints } = JSON.parse(event.body);
+    const firstName = (name || '').trim().split(/\s+/)[0];
     const painPointsStr = Array.isArray(painPoints) ? painPoints.join(', ') : '';
 
     // Map pain point labels to boolean flags
@@ -30,6 +31,7 @@ exports.handler = async (event) => {
             city,
             unitType,
             sqft,
+            ownership,
             ...flags
         })
     });
@@ -49,14 +51,16 @@ exports.handler = async (event) => {
         from: `"Panl" <${process.env.ZOHO_USER}>`,
         to: process.env.ZOHO_USER,
         replyTo: email,
-        subject: `New audit — ${city || 'location not provided'}`,
+        subject: `New audit request — ${firstName || 'Unknown'}, ${city || 'location not provided'}`,
         text: [
             `New space audit request`,
             ``,
+            `Name:        ${name || '—'}`,
             `Email:       ${email}`,
             `City:        ${city || '—'}`,
             `Home type:   ${unitType || '—'}`,
             `Size:        ${sqft || '—'}`,
+            `Ownership:   ${ownership || '—'}`,
             `Pain points: ${painPointsStr || '—'}`,
             ``,
             `Reply directly to this email to respond to them.`
