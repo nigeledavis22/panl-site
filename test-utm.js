@@ -21,7 +21,7 @@ require.cache[require.resolve('nodemailer')] = {
 const loopsCalls = [];
 global.fetch = async (url, opts) => {
     loopsCalls.push({ url, body: JSON.parse(opts.body) });
-    return { ok: true, json: async () => ({ success: true }) };
+    return { ok: true, status: 200, text: async () => JSON.stringify({ success: true }) };
 };
 
 // ── Env vars ─────────────────────────────────────────────────────────────────
@@ -79,7 +79,7 @@ async function run() {
 
     const loopsCall = loopsCalls[0];
     assert(loopsCall !== undefined, 'called Loops API');
-    assert(loopsCall.url.includes('/contacts/upsert'), 'called contacts/upsert');
+    assert(loopsCall.url.includes('/contacts/create'), 'called contacts/create');
     assert(loopsCall.body.utmSource   === 'reddit',             'utmSource sent to Loops');
     assert(loopsCall.body.utmMedium   === 'paid',               'utmMedium sent to Loops');
     assert(loopsCall.body.utmCampaign === 'apartment-audit-1',  'utmCampaign sent to Loops');
@@ -107,7 +107,7 @@ async function run() {
     assert(emailText.includes('reddit'),             'utm_source in email');
     assert(emailText.includes('paid'),               'utm_medium in email');
     assert(emailText.includes('apartment-audit-1'), 'utm_campaign in email');
-    assert(emailText.includes('parents-ad'),        'utm_content in email');
+    assert(emailText.includes('Ad group') && emailText.includes('parents-ad'), 'utm_content labeled as Ad group in email');
     assert(emailText.includes('small-apartment'),   'utm_term in email');
 
     console.log('');

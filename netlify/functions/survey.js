@@ -71,7 +71,7 @@ exports.handler = async (event) => {
             utm_source   ? `Source:    ${utm_source}`   : null,
             utm_medium   ? `Medium:    ${utm_medium}`   : null,
             utm_campaign ? `Campaign:  ${utm_campaign}` : null,
-            utm_content  ? `Content:   ${utm_content}`  : null,
+            utm_content  ? `Ad group:  ${utm_content}`  : null,
             utm_term     ? `Term:      ${utm_term}`     : null,
         ].filter(Boolean) : [])
         ].join('\n')
