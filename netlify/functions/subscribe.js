@@ -17,24 +17,29 @@ exports.handler = async (event) => {
     if (utm_content)  utmProps.utmContent  = utm_content;
     if (utm_term)     utmProps.utmTerm     = utm_term;
 
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.LOOPS_API_KEY}`
+    };
+    const contactBody = { email, firstName, lastName, userId, ...utmProps };
+
     try {
-        const response = await fetch('https://app.loops.so/api/v1/contacts/upsert', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.LOOPS_API_KEY}`
-            },
-            body: JSON.stringify({ email, firstName, lastName, userId, ...utmProps })
+        let response = await fetch('https://app.loops.so/api/v1/contacts/create', {
+            method: 'POST', headers, body: JSON.stringify(contactBody)
         });
 
-        const text = await response.text();
-        if (!response.ok) {
-            return { statusCode: 200, body: JSON.stringify({ ok: false, loopsStatus: response.status, loopsBody: text.slice(0, 300) }) };
+        // Contact already exists — update UTMs and name instead
+        if (response.status === 409) {
+            response = await fetch('https://app.loops.so/api/v1/contacts/update', {
+                method: 'PUT', headers, body: JSON.stringify(contactBody)
+            });
         }
-        const data = JSON.parse(text);
+
+        const text = await response.text();
+        const data = text ? JSON.parse(text) : {};
         return { statusCode: 200, body: JSON.stringify(data) };
     } catch (err) {
-        console.error('Loops upsert failed:', err.message);
+        console.error('Loops error:', err.message);
         return { statusCode: 200, body: JSON.stringify({ ok: true, loopsError: err.message }) };
     }
 };
