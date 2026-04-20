@@ -70,8 +70,8 @@ exports.handler = async (event) => {
             `── Attribution ──────────────────────────────`,
             utm_source   ? `Source:    ${utm_source}`   : null,
             utm_medium   ? `Medium:    ${utm_medium}`   : null,
-            utm_campaign ? `Campaign:  ${utm_campaign}` : null,
-            utm_content  ? `Ad group:  ${utm_content}`  : null,
+            utm_campaign ? `Ad group:  ${utm_campaign}` : null,
+            utm_content  ? `Creative:  ${utm_content}`  : null,
             utm_term     ? `Term:      ${utm_term}`     : null,
         ].filter(Boolean) : [])
         ].join('\n')

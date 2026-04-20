@@ -107,7 +107,8 @@ async function run() {
     assert(emailText.includes('reddit'),             'utm_source in email');
     assert(emailText.includes('paid'),               'utm_medium in email');
     assert(emailText.includes('apartment-audit-1'), 'utm_campaign in email');
-    assert(emailText.includes('Ad group') && emailText.includes('parents-ad'), 'utm_content labeled as Ad group in email');
+    assert(emailText.includes('Ad group')  && emailText.includes('apartment-audit-1'), 'utm_campaign labeled as Ad group in email');
+    assert(emailText.includes('Creative') && emailText.includes('parents-ad'),        'utm_content labeled as Creative in email');
     assert(emailText.includes('small-apartment'),   'utm_term in email');
 
     console.log('');
