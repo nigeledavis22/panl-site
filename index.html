@@ -1206,6 +1206,22 @@
     </div>
 
     <script>
+        // Capture UTM params on arrival and persist for the session
+        (function () {
+            const p = new URLSearchParams(window.location.search);
+            const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+            keys.forEach(k => {
+                if (p.has(k)) sessionStorage.setItem(k, p.get(k));
+            });
+        })();
+
+        function getUtms() {
+            const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+            const utms = {};
+            keys.forEach(k => { if (sessionStorage.getItem(k)) utms[k] = sessionStorage.getItem(k); });
+            return utms;
+        }
+
         const submitted = new Set();
 
         async function handleSubmit(event, successId) {
@@ -1228,7 +1244,7 @@
                     const res = await fetch('/.netlify/functions/subscribe', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ name, email })
+                        body: JSON.stringify({ name, email, ...getUtms() })
                     });
                     if (!res.ok) throw new Error();
                 }

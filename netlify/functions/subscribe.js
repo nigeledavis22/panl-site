@@ -5,18 +5,25 @@ exports.handler = async (event) => {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
 
-    const { name, email } = JSON.parse(event.body);
+    const { name, email, utm_source, utm_medium, utm_campaign, utm_content, utm_term } = JSON.parse(event.body);
     const [firstName, ...rest] = name.trim().split(/\s+/);
     const lastName = rest.join(' ');
     const userId = randomUUID();
 
-    const response = await fetch('https://app.loops.so/api/v1/contacts/create', {
+    const utmProps = {};
+    if (utm_source)   utmProps.utmSource   = utm_source;
+    if (utm_medium)   utmProps.utmMedium   = utm_medium;
+    if (utm_campaign) utmProps.utmCampaign = utm_campaign;
+    if (utm_content)  utmProps.utmContent  = utm_content;
+    if (utm_term)     utmProps.utmTerm     = utm_term;
+
+    const response = await fetch('https://app.loops.so/api/v1/contacts/upsert', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${process.env.LOOPS_API_KEY}`
         },
-        body: JSON.stringify({ email, firstName, lastName, userId })
+        body: JSON.stringify({ email, firstName, lastName, userId, ...utmProps })
     });
 
     const data = await response.json();
