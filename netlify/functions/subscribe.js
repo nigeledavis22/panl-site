@@ -28,7 +28,10 @@ exports.handler = async (event) => {
         });
 
         const text = await response.text();
-        const data = text ? JSON.parse(text) : {};
+        if (!response.ok) {
+            return { statusCode: 200, body: JSON.stringify({ ok: false, loopsStatus: response.status, loopsBody: text.slice(0, 300) }) };
+        }
+        const data = JSON.parse(text);
         return { statusCode: 200, body: JSON.stringify(data) };
     } catch (err) {
         console.error('Loops upsert failed:', err.message);
