@@ -5,7 +5,8 @@ exports.handler = async (event) => {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
 
-    const { email, name, city, unitType, sqft, ownership, painPoints } = JSON.parse(event.body);
+    const { email, name, city, unitType, sqft, ownership, painPoints,
+            utm_source, utm_medium, utm_campaign, utm_content, utm_term } = JSON.parse(event.body);
     const firstName = (name || '').trim().split(/\s+/)[0];
     const painPointsStr = Array.isArray(painPoints) ? painPoints.join(', ') : '';
 
@@ -63,7 +64,16 @@ exports.handler = async (event) => {
             `Ownership:   ${ownership || '—'}`,
             `Pain points: ${painPointsStr || '—'}`,
             ``,
-            `Reply directly to this email to respond to them.`
+            `Reply directly to this email to respond to them.`,
+            ...(utm_source || utm_medium || utm_campaign ? [
+            ``,
+            `── Attribution ──────────────────────────────`,
+            utm_source   ? `Source:    ${utm_source}`   : null,
+            utm_medium   ? `Medium:    ${utm_medium}`   : null,
+            utm_campaign ? `Campaign:  ${utm_campaign}` : null,
+            utm_content  ? `Content:   ${utm_content}`  : null,
+            utm_term     ? `Term:      ${utm_term}`     : null,
+        ].filter(Boolean) : [])
         ].join('\n')
     });
 

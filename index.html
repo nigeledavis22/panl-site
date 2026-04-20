@@ -1296,7 +1296,7 @@
                     await fetch('/.netlify/functions/survey', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email, name, city, unitType, sqft, ownership, painPoints })
+                        body: JSON.stringify({ email, name, city, unitType, sqft, ownership, painPoints, ...getUtms() })
                     });
                 } catch {
                     // fail silently — show thanks regardless
